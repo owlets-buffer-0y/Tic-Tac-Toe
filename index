@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class FactorialCalculator {
+
+    public static void main(String[] args) {
+        System.out.println("Factorial Calculator");
+
+        // Get user input for the number
+        int number = getNumericInput("Enter a non-negative integer: ");
+
+        // Calculate the factorial
+        int factorial = calculateFactorial(number);
+
+        // Display the result
+        System.out.println("The factorial of " + number + " is: " + factorial);
+    }
+
+    private static int getNumericInput(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(prompt);
+
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter a non-negative integer.");
+            System.out.print(prompt);
+            scanner.next(); // Consume the invalid input
+        }
+
+        return scanner.nextInt();
+    }
+
+    private static int calculateFactorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            return n * calculateFactorial(n - 1);
+        }
+    }
+}
